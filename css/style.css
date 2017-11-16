@@ -1,0 +1,45 @@
+.content-message{
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.2);
+  height: 450px;
+}
+.table-message{
+  width: 100%;
+}
+.table-message span{
+  font-size: 0.7em;
+  color: rgba(0,0,0,0.3):
+}
+.remitente-table{
+    text-align: left;
+}
+.destinatario-table{
+    text-align: right;
+}
+ .table-user-only{
+   width: 100%;
+ }
+ .table-user-only td{
+   padding: 5px;
+ }
+ .table-user-only img{
+   width: 180px;
+   margin-left: 65px;
+ }
+.table-user-only .name-user-only{
+  font-family: 'Comic Sans';
+  text-align: center;
+  font-size: 1.2em;
+}
+.table-user{
+  width: 100%;
+
+}
+.table-user td{
+  padding: 5px 0px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.user-title{
+  font-size: 1.3em;
+  font-family: 'arial';
+}
