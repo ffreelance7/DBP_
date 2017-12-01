@@ -20,7 +20,6 @@ $.ajax({method: "GET",
 function load_message(){
 
  var users = {
-   "remitente": "<?php echo $_SESSION['user']; ?>",
    "destinatario": global_desti
    };
 
@@ -33,16 +32,12 @@ $('.user-title').html(global_desti);
        var json = JSON.parse(responseText);
          var html="<table class='table-message'>";
          for (var i=0; i<json.length; i++) {
-           switch (json[i].destinatario) {
-             case "<?php echo $_SESSION['user'] ?>":
-                   html +="<tr><td class='remitente-table'>"+ json[i].mensaje + "-<span>"+json[i].fecha + "</span></td></tr>";
-               break;
-             case global_desti:
-                   html +="<tr><td  class='destinatario-table'>"+ json[i].mensaje + "-<span>"+json[i].fecha + "</span></td></tr>";
-               break;
-             default:
-           }
-         }
+           if(json[i].destinatario==global_desti){
+                  html +="<tr><td  class='destinatario-table'>"+ json[i].mensaje + "-<span>"+json[i].fecha + "</span></td></tr>";
+              }else{
+                     html +="<tr><td class='remitente-table'>"+ json[i].mensaje + "-<span>"+json[i].fecha + "</span></td></tr>";
+                 }       
+          }
           html+="</table>";
            $(".content-message").html(html);
    });
@@ -50,7 +45,7 @@ $('.user-title').html(global_desti);
 
 function load_contents(user_destinatario){
 global_desti=user_destinatario;
-load_message();
+//load_message();
 load_user_only();
 }
 
@@ -77,7 +72,6 @@ $("#button_cerrar_sessi").click(function() {
 $("#send_message").click(function() {
    if($("#text-message").val()!='' && global_desti!=""){
      var mensaje = {
-       "remitente": "<?php echo $_SESSION['user'] ?>",
        "destinatario": global_desti,
        "mensaje" :$("#text-message").val()
        };
@@ -93,5 +87,6 @@ $("#send_message").click(function() {
      $("#text-message").val('');
  });
 $( document ).ready(function() {
+ setInterval(load_message, 3000);
 load_users();
 });
