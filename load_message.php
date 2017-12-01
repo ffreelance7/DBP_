@@ -8,10 +8,10 @@ $dbhost = "localhost";
 $dbuser = "lan_user";
 $dbpass = "lan_user";
 $db = "Chat_DB";
-echo $data['remitente'];
+
 
 $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Conexion fallida: %s\n". $conn -> error);
-$sql = "SELECT * FROM mensaje WHERE (remitente='".$data['remitente']."' and destinatario='".$data['destinatario']."') or (remitente='".$data['destinatario']."' and destinatario='".$data['remitente']."')";
+$sql = "SELECT * FROM mensaje WHERE (remitente='".$_SESSION['user']."' and destinatario='".$data['destinatario']."') or (remitente='".$data['destinatario']."' and destinatario='".$_SESSION['user']."')";
 
 $result = $conn->query($sql);
 
